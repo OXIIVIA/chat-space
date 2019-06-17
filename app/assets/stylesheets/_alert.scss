@@ -1,0 +1,37 @@
+.alert {
+  width: 100vw;
+  background-color: #38aef0;
+  color: #ffffff;
+  text-align: center;
+}
+.side-bar {
+  height: 100vh;
+  color: #ffffff;
+  font-weight: bold;
+  float:left;
+}
+.side-head {
+  height: 100px;
+  width: 260px;
+  padding: 0 20px;
+  background-color: #253141;
+  font-size: 16px;
+  
+  line-height: 100px;
+}
+.side-content {
+  height: calc(100vh - 100px);
+  width: 260px;
+  padding: 20px 20px 0;
+  background-color: #2f3e51;
+  &__group {
+    margin-bottom:40px; 
+    &--name {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    &--message {
+      font-size: 11px;
+    }
+  }
+}
