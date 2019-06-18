@@ -5,24 +5,44 @@
     %title 仮ページだお
   
   %body
-    %div.alert
-      グループを作成しました
+    %div.alert グループを作成しました
     %div.side-bar
-      %div.side-head
-        test-user
+      %div.side-head test-user
       %div.side-content
         %div.side-content__group
-          %p.side-content__group--name
-            test-name1
-          %p.side-content__group--message
-            test-message1
+          %p.side-content__group--name test-name1
+          %p.side-content__group--message test-message1
         %div.side-content__group
-          %p.side-content__group--name
-            test-name2
-          %p.side-content__group--message
-            test-message2
+          %p.side-content__group--name test-name2
+          %p.side-content__group--message test-message2
         %div.side-content__group
-          %p.side-content__group--name
-            test-name3
-          %p.side-content__group--message
-            test-message3
+          %p.side-content__group--name test-name3
+          %p.side-content__group--message test-message3
+
+    %div.main       
+      %div.main-head
+        %div.main-head__group
+          %p.main-head__group--name test-name1
+          %p.main-head__group--member Member: Katou Sawa Oshima
+        %div.main-head__edit
+          %a.main-head__edit--btn Edit
+      %div.main-content
+        %div.main-content__group
+          %p.main-content__group--member Katou
+          %span<>
+          %p.main-content__group--date 2019/06/18(Tue) 22:34
+          %p.main-content__group--text こんばんは！
+        %div.main-content__group
+          %p.main-content__group--member Sawa
+          %span<>
+          %p.main-content__group--date 2019/06/18(Tue) 22:35
+          %p.main-content__group--text こんばんは！
+        %div.main-content__group
+          %p.main-content__group--member Oshima
+          %span<>
+          %p.main-content__group--date 2019/06/18(Tue) 22:36
+          %p.main-content__group--text こんばんは！
+      %div.form
+        %input.form__message
+        %input.form__submit
+          
