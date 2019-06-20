@@ -1,0 +1,6 @@
+@mixin icon-style {
+  text-decoration: none;
+  &:visited {
+    color: white;
+  }
+}

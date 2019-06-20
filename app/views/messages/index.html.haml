@@ -2,47 +2,39 @@
 %html
   %head
     %meta{charset: "utf-8"}
-    %title 仮ページだお
-  
   %body
-    %div.alert グループを作成しました
-    %div.side-bar
-      %div.side-head test-user
-      %div.side-content
-        %div.side-content__group
-          %p.side-content__group--name test-name1
-          %p.side-content__group--message test-message1
-        %div.side-content__group
-          %p.side-content__group--name test-name2
-          %p.side-content__group--message test-message2
-        %div.side-content__group
-          %p.side-content__group--name test-name3
-          %p.side-content__group--message test-message3
+    .alert グループを作成しました
 
-    %div.main       
-      %div.main-head
-        %div.main-head__group
-          %p.main-head__group--name test-name1
-          %p.main-head__group--member Member: Katou Sawa Oshima
-        %div.main-head__edit
-          %a.main-head__edit--btn Edit
-      %div.main-content
-        %div.main-content__group
+    = render partial: "side-bar"
+
+    .main       
+      .main-head
+        .main-head__group
+          %p.main-head__group--name test-group1
+          %p.main-head__group--member Member：Katou Sawa Oshima
+        =link_to "http://localhost:3000/", class: "main-head__edit-btn" do
+          Edit
+      .main-content
+        .main-content__group
           %p.main-content__group--member Katou
-          %span<>
           %p.main-content__group--date 2019/06/18(Tue) 22:34
-          %p.main-content__group--text こんばんは！
-        %div.main-content__group
+        %p.main-content__text こんばんは！
+        .main-content__group
           %p.main-content__group--member Sawa
-          %span<>
           %p.main-content__group--date 2019/06/18(Tue) 22:35
-          %p.main-content__group--text こんばんは！
-        %div.main-content__group
+        %p.main-content__text こんばんは！
+        .main-content__group
           %p.main-content__group--member Oshima
           %span<>
           %p.main-content__group--date 2019/06/18(Tue) 22:36
-          %p.main-content__group--text こんばんは！
-      %div.form
-        %input.form__message
-        %input.form__submit
+        %p.main-content__text こんばんは！
+
+      .message
+        %form.form
+          .form__box
+            %input.form__box__message{placeholder: "type a message", type: "text", name: "text" }
+            %label.form__box__photo{for: "upload-icon"}
+              = fa_icon "image", class: "form__box__photo--image"
+              %input.form__box__photo--file{type: "file", name: "image", id: "upload-icon"}
+          %input.form__submit{type: "submit", value: "Send"}
           
