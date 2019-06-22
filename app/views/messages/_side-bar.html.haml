@@ -1,0 +1,18 @@
+.side-bar
+  .side-head
+    %p.side-head__user test-user
+    .side-head__icon
+      =link_to "#", class: "side-head__icon--edit" do
+        = fa_icon "edit"
+      =link_to "#", class: "side-head__icon--cog" do
+        = fa_icon "cog"
+  .side-content
+    .side-content__group
+      %p.side-content__group--name test-group1
+      %p.side-content__group--message test-message1
+    .side-content__group
+      %p.side-content__group--name test-group2
+      %p.side-content__group--message test-message2
+    .side-content__group
+      %p.side-content__group--name test-group3
+      %p.side-content__group--message test-message3
