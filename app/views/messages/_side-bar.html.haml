@@ -1,10 +1,11 @@
 .side-bar
   .side-head
-    %p.side-head__user test-user
+    %p.side-head__user 
+      = current_user.name
     .side-head__icon
       =link_to "#", class: "side-head__icon--edit" do
         = fa_icon "edit"
-      =link_to "#", class: "side-head__icon--cog" do
+      =link_to edit_user_path(current_user), class: "side-head__icon--cog" do
         = fa_icon "cog"
   .side-content
     .side-content__group
