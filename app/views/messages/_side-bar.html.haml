@@ -3,17 +3,15 @@
     %p.side-head__user 
       = current_user.name
     .side-head__icon
-      =link_to "#", class: "side-head__icon--edit" do
+      =link_to new_group_path, class: "side-head__icon--edit" do
         = fa_icon "edit"
       =link_to edit_user_path(current_user), class: "side-head__icon--cog" do
         = fa_icon "cog"
   .side-content
     .side-content__group
-      %p.side-content__group--name test-group1
-      %p.side-content__group--message test-message1
-    .side-content__group
-      %p.side-content__group--name test-group2
-      %p.side-content__group--message test-message2
-    .side-content__group
-      %p.side-content__group--name test-group3
-      %p.side-content__group--message test-message3
+      - current_user.groups.each do |group|
+        = link_to group_messages_path(group) do
+          .side-content__group--name
+            = group.name
+          .side-content__group--message
+            メッセージはまだありません。
