@@ -34,8 +34,6 @@ describe Message do
         message.valid?
         expect(message.errors[:user]).to include("を入力してください")
       end
-
     end
-
   end
 end
