@@ -1,0 +1,10 @@
+.main       
+  .main-head
+    .main-head__group
+      %p.main-head__group--name test-group1
+      %p.main-head__group--member Member：Katou Sawa Oshima
+    =link_to "/groups/3/edit", class: "main-head__edit-btn" do
+      Edit
+  .main-content
+    = render partial: "message", collection: @messages
+  = render partial: "form"
