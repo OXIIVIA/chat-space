@@ -1,12 +1,3 @@
--# .message
--#   %form.form
--#     .form__box
--#       %input.form__box__message{placeholder: "type a message", type: "text", name: "text" }
--#       %label.form__box__photo{for: "upload-icon"}
--#         = fa_icon "image", class: "form__box__photo--image"
--#         %input.form__box__photo--file{type: "file", name: "image", id: "upload-icon"}
--#     %input.form__submit{type: "submit", value: "Send"}
-
 .form
   = form_for [@group, @message] do |f|
     .form__box
