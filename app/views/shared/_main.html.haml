@@ -1,0 +1,21 @@
+.main       
+  .main-head
+    .main-head__group
+      %p.main-head__group--name
+        = @group.name
+      %p.main-head__group--member 
+        = "Member："
+        - @group.users.each do |member|
+          = member.name
+    =link_to edit_group_path(@group), class: "main-head__edit-btn" do
+      Edit
+  .main-content
+    = render partial: "shared/message", collection: @messages
+  .form
+    = form_for [@group, @message] do |f|
+      .form__box
+        = f.text_field :content, class: 'form__box--message', placeholder: 'type a message'
+        = f.label :image, class: 'form__box--image' do
+          = fa_icon 'picture-o', class: 'icon'
+          = f.file_field :image, class: 'hidden'
+      = f.submit 'Send', class: 'form__submit'

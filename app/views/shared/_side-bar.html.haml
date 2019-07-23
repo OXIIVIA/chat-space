@@ -1,0 +1,18 @@
+.side-bar
+  .side-head
+    %p.side-head__user 
+      = current_user.name
+    .side-head__icon
+      =link_to new_group_path, class: "side-head__icon--edit" do
+        = fa_icon "edit"
+      =link_to edit_user_path(current_user), class: "side-head__icon--cog" do
+        = fa_icon "cog"
+
+  .side-content
+    - current_user.groups.each do |group|
+      .side-content__group
+        = link_to group_messages_path(group) do
+          .side-content__group--name
+            = group.name
+          .side-content__group--message
+            = group.show_last_message

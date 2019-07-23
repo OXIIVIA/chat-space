@@ -1,7 +1,10 @@
-@import "./reset";
-@import "./variable";
-@import "./icon-style";
+@import "config/colors";
+@import "config/reset";
+@import "config/variable";
+@import "mixins/icon-style";
 @import "font-awesome";
-@import "./index";
-
+@import "modules/index";
+@import "modules/user";
+@import "modules/group";
+@import "modules/flash";
 
