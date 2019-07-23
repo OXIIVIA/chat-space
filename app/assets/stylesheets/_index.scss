@@ -97,6 +97,7 @@ a {
   height: calc(100vh - 100px - 90px);
   padding: 46px 40px 0;
   background-color: #fafafa;
+  overflow: scroll;
   &__group {
     margin-bottom: 10px;
     display: flex;
