@@ -3,7 +3,8 @@
     = message.user.name
   %p.main-content__group--date
     = message.created_at.strftime("%Y/%m/%d %H:%M")
-%p.main-content__text
-  - if message.content.present?
-    = message.content
-  = image_tag message.image.url, class: 'main-content__image' if message.image.present?
+.main-content__message
+  %p.main-content__message__content
+    - if message.content.present?
+      = message.content
+  = image_tag message.image.url, class: 'main-content____message__image' if message.image.present?
