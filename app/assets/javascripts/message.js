@@ -5,6 +5,7 @@ $(function() {
                   <p class="main-content__group--member">${data.user_name}</p>
                   <p class="main-content__group--date">${data.date}</p>
                 </div>`
+
     return group;
   }
 
@@ -12,6 +13,7 @@ $(function() {
     var content =  `<div class="main-content__message">
                       <p class="main-content__message__content">${data.content}</p>
                     </div>`
+
     return content;
   }
 
@@ -19,19 +21,22 @@ $(function() {
     var image =  `<div class="main-content__message">
                     <img class="main-content____message__image" src="${data.image}">
                   </div>`
+
     return image;
   }
   function buildContentWithImage(data) {
     var controlWithImage =  `<div class="main-content__message">
-                  <p class="main-content__message__content">${data.content}</p>
-                  <img class="main-content____message__image" src="${data.image}">
-                </div>`
+                              <p class="main-content__message__content">${data.content}</p>
+                              <img class="main-content____message__image" src="${data.image}">
+                            </div>`
+
     return controlWithImage;
   }
 
   function getHeight() {
     var element = document.getElementById("main-content")
     var height = element.scrollHeight;
+
     return height;
   }
 
@@ -44,6 +49,7 @@ $(function() {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
+    
     $.ajax({
       url: url,
       type: "POST",
@@ -76,6 +82,7 @@ $(function() {
     })
     .fail(function() {
       alert('メッセージを入力してください');
+
       $('.form__submit').prop('disabled', false);
     })
   });
