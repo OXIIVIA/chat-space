@@ -114,10 +114,13 @@ a {
       color: $main-gray;
     }
   }
-  &__text {
-    margin-bottom: 40px;
-    font-size: 14px;
-    color: $main-form-black;
+  &__message {
+    padding-bottom: 40px;
+    &__content {
+      margin-bottom: 10px;
+      font-size: 14px;
+      color: $main-form-black;
+    }
   }
 }
 
