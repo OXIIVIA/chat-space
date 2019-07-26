@@ -1,21 +1,29 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: [:edit, :update]
   before_action :set_users, only: [:new, :edit]
-  
+
   def index
   end
 
   def new
     @group = Group.new
     @group.users << current_user
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def create
     @group = Group.new(group_params)
-    if @group.save
-      redirect_to root_path, nitoce: 'グループを作成しました'
-    else
-      render :new
+    respond_to do |format|
+      if @group.save
+        format.html {redirect_to root_path, nitoce: 'グループを作成しました'}
+        format.json
+      else
+        format.html {render :new}
+        format.json
+      end
     end
   end
 
