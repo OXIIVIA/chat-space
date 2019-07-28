@@ -1,4 +1,4 @@
-$(function() {
+$(document).on('turbolinks:load', function() {
 
   function buildGroup(data)  {
     var group = `<div class="main-content__group">
