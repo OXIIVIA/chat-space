@@ -1,42 +1,42 @@
 $(document).on('turbolinks:load', function() {
 
-  function buildGroup(data)  {
-    var group = `<div class="main-content__group">
-                  <p class="main-content__group--member">${data.user_name}</p>
-                  <p class="main-content__group--date">${data.date}</p>
-                </div>`
-
-    return group;
-  }
-
   function buildContent(data) {
-    var content =  `<div class="main-content__message">
+    var content =  `<div class="main-content__message" data-id="${data.id}" id="message">
+                      <div class="main-content__message__group">
+                        <p class="main-content__message__group--member">${data.user_name}</p>
+                        <p class="main-content__message__group--date">${data.date}</p>
+                      </div>
                       <p class="main-content__message__content">${data.content}</p>
                     </div>`
-
     return content;
   }
 
   function buildImage(data) {
-    var image =  `<div class="main-content__message">
+    var image =  `<div class="main-content__message" data-id="${data.id}" id="message">
+                    <div class="main-content__message__group">
+                      <p class="main-content__message__group--member">${data.user_name}</p>
+                      <p class="main-content__message__group--date">${data.date}</p>
+                    </div>
                     <img class="main-content____message__image" src="${data.image}">
                   </div>`
-
     return image;
   }
+
   function buildContentWithImage(data) {
-    var controlWithImage =  `<div class="main-content__message">
+    var contentWithImage =  `<div class="main-content__message" data-id="${data.id}" id="message">
+                              <div class="main-content__message__group">
+                                <p class="main-content__message__group--member">${data.user_name}</p>
+                                <p class="main-content__message__group--date">${data.date}</p>
+                              </div>
                               <p class="main-content__message__content">${data.content}</p>
                               <img class="main-content____message__image" src="${data.image}">
                             </div>`
-
-    return controlWithImage;
+    return contentWithImage;
   }
 
   function getHeight() {
     var element = document.getElementById("main-content")
     var height = element.scrollHeight;
-
     return height;
   }
 
@@ -49,7 +49,6 @@ $(document).on('turbolinks:load', function() {
     e.preventDefault();
     var formData = new FormData(this);
     var url = $(this).attr('action');
-    
     $.ajax({
       url: url,
       type: "POST",
@@ -59,22 +58,17 @@ $(document).on('turbolinks:load', function() {
       contentType: false
     })
     .done(function(data) {
-      var group = buildGroup(data);
       var content = buildContent(data);
       var image = buildImage(data);
-      var controlWithImage = buildContentWithImage(data);
-
-      $('.main-content').append(group);
+      var contentWithImage = buildContentWithImage(data);
       if (data.content && data.image ) {
-        $('.main-content').append(controlWithImage);
+        $('.main-content').append(contentWithImage);
       } else if (data.content) {
         $('.main-content').append(content);
       } else {
         $('.main-content').append(image);
       }
-
       var height = getHeight();
-
       $('.main-content').animate({scrollTop: height}, 0);
       $('.form__box--message').val('');
       clearImage();
@@ -82,7 +76,6 @@ $(document).on('turbolinks:load', function() {
     })
     .fail(function() {
       alert('メッセージを入力してください');
-
       $('.form__submit').prop('disabled', false);
     })
   });
