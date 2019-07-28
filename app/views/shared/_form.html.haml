@@ -24,17 +24,17 @@
     .chat-group-form__field--right
       #chat-group-users
         .chat-group-user.clearfix
-          %input{name: 'chat_group[user_ids][]', type: 'hidden', value: current_user.id}
+          %input{name: 'group[user_ids][]', type: 'hidden', value: current_user.id}
           %p.chat-group-user__name
             = current_user.name
         - group.users.each do |user|
           -if user.id != current_user.id
             .chat-group-user.clearfix
-              %input{name: 'chat_group[user_ids][]', type: 'hidden', value: user.id}
+              %input{name: 'group[user_ids][]', type: 'hidden', value: user.id}
               %p.chat-group-user__name
                 = user.name
               %p.chat-group-user__btn.chat-group-user__btn--remove 削除
   .chat-group-form__field.clearfix
     .chat-group-form__field--left
     .chat-group-form__field--right
-      = f.submit class: 'chat-group-form__action-btn', value: "更新する"
+      = f.submit class: 'chat-group-form__action-btn'
