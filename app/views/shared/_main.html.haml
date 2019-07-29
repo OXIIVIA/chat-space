@@ -9,7 +9,7 @@
           = member.name
     =link_to edit_group_path(@group), class: "main-head__edit-btn" do
       Edit
-  .main-content#main-content
+  .main-content#main-content{data: {"group-id": @group.id}}
     = render partial: "shared/message", collection: @messages
   .form
     = form_for [@group, @message] do |f|

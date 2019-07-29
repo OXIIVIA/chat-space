@@ -34,10 +34,21 @@ $(document).on('turbolinks:load', function() {
     return contentWithImage;
   }
 
-  function getHeight() {
+  function appendMessages(messages) {
+    var content = buildContent(messages);
+    var image = buildImage(messages);
+    var contentWithImage = buildContentWithImage(messages);
+    if (messages.content && messages.image ) {
+      $('.main-content').append(contentWithImage);
+    } else if (messages.content) {
+      $('.main-content').append(content);
+    } else {
+      $('.main-content').append(image);
+    }
+
     var element = document.getElementById("main-content")
     var height = element.scrollHeight;
-    return height;
+    $('.main-content').animate({scrollTop: height}, 0);
   }
 
   function clearImage() {
@@ -57,19 +68,8 @@ $(document).on('turbolinks:load', function() {
       processData: false,
       contentType: false
     })
-    .done(function(data) {
-      var content = buildContent(data);
-      var image = buildImage(data);
-      var contentWithImage = buildContentWithImage(data);
-      if (data.content && data.image ) {
-        $('.main-content').append(contentWithImage);
-      } else if (data.content) {
-        $('.main-content').append(content);
-      } else {
-        $('.main-content').append(image);
-      }
-      var height = getHeight();
-      $('.main-content').animate({scrollTop: height}, 0);
+    .done(function(messages) {
+      appendMessages(messages);
       $('.form__box--message').val('');
       clearImage();
       $('.form__submit').prop('disabled', false);
@@ -79,4 +79,27 @@ $(document).on('turbolinks:load', function() {
       $('.form__submit').prop('disabled', false);
     })
   });
+
+
+  var reloadMessages = function () {
+    last_message_id = $('.main-content__message').last().attr('data-id');
+    $.ajax({
+      url: '/groups/:group_id/api/messages',
+      type: 'GET',
+      dataType: 'json',
+      data: {id: last_message_id}
+    })
+    .done(function(messages) {
+      group_id = $('#main-content').attr('data-group-id');
+      $.each(messages, function(i, message) {
+        if (group_id == message.group_id)
+        appendMessages(message);
+      });
+      
+    })
+    .fail(function() {
+      alert('自動更新に失敗しました');
+    })
+  };
+  setInterval(reloadMessages, 5000);
 });
