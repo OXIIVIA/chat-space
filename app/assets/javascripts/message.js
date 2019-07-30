@@ -83,8 +83,10 @@ $(document).on('turbolinks:load', function() {
 
   var reloadMessages = function () {
     last_message_id = $('.main-content__message').last().attr('data-id');
+    current_page = window.location.href
+    url = current_page.replace('messages', 'api/messages')
     $.ajax({
-      url: '/groups/:group_id/api/messages',
+      url: url,
       type: 'GET',
       dataType: 'json',
       data: {id: last_message_id}
