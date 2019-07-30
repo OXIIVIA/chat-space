@@ -1,9 +1,9 @@
-.main-content__group
-  %p.main-content__group--member
-    = message.user.name
-  %p.main-content__group--date
-    = message.created_at.strftime("%Y/%m/%d %H:%M")
-.main-content__message
+.main-content__message#message{data: {id: message.id}}
+  .main-content__message__group
+    %p.main-content__message__group--member
+      = message.user.name
+    %p.main-content__message__group--date
+      = message.created_at.strftime("%Y/%m/%d %H:%M")
   %p.main-content__message__content
     - if message.content.present?
       = message.content
