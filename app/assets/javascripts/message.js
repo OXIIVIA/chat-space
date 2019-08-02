@@ -97,10 +97,9 @@ $(document).on('turbolinks:load', function() {
         if (group_id == message.group_id)
         appendMessages(message);
       });
-      
     })
     .fail(function() {
-      alert('自動更新に失敗しました');
+      console.log('error');
     })
   };
   setInterval(reloadMessages, 5000);
